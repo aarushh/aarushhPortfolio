@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Utsav Portfolio</title>
+        <meta name= "viewport" content= "width= device-width, initial-scale=1.0">
+        <link rel = "icon" href="C:\Users\Utsab\Desktop\beard.jpg" width="16px",height = "16px">
+        <style>
+            body{
+                text-align: center;
+            }
+        </style>
+        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+        
+    </head>
+<body>
+    <figure>
+        <img id = "avatar" 
+        width="200"
+         height="200">
+        <figcaption>
+            <h2 id="fullname"> </h2>
+        </figcaption>
+    </figure>
+    <p id="bio"></p>
+
+    <p>Check me on 
+        <a id="githubLink" target="_blank" >GitHub </a>
+    </p>
+
+    <p>Check my Not so good repos </p>
+    <table id="repo">
+        <thead>
+        <tr>
+           
+        </tr>
+        </thead>
+        <tbody>
+        
+        </tbody>
+    </table>
+    
+
+<script>
+    
+    fetch("https://api.github.com/users/utsavpaudel")
+    .then(response=>response.json())
+    .then(function(data){
+        console.log(data)
+        
+        document.getElementById('avatar').src = data['avatar_url']
+        document.getElementById('fullname').textContent = data['name']
+        document.getElementById('bio').textContent = data['bio']
+        
+        document.getElementById('githubLink').href = data['html_url']
+
+    })
+
+    fetch("https://api.github.com/users/utsavpaudel/repos")
+    .then(response=>response.json())
+    .then(function(datas){
+        console.log(datas)
+        
+       
+    var table = document.getElementById('repo');
+   
+      for (i=0; i<datas['length']; i++)  {
+    
+    var $nr = (datas[i]['name'] +  '\t' +datas[i]['html_url']+ '\n')
+    
+    table.append($nr) 
+   
+      }
+  
+    })
+    
+
+
+</script>
+
+</body>
+
+
+</html>
