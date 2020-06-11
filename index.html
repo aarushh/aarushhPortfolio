@@ -7,12 +7,21 @@
         <style>
             body{
                 text-align: center;
+                background-image: radial-gradient(grey , lightblue 50%, lightgreen);
+            }
+            #repo{
+                border: 10px ridge rgba(40,50,80,0.7);
+                width: '48 px';
             }
         </style>
-        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         
     </head>
+    
 <body>
+    <nav>
+        <a href="#repo">Projects</a>
+    </nav>
     <figure>
         <img id = "avatar" 
         width="200"
@@ -24,10 +33,11 @@
     <p id="bio"></p>
 
     <p>Check me on 
-        <a id="githubLink" target="_blank" >GitHub </a>
+        <a rel= "nofollow" id="githubLink" target="_blank" >GitHub </a>
     </p>
 
-    <p>Check my Not so good repos </p>
+    <p><h2><q>My projects</q></h2></p>
+    
     <table id="repo">
         <thead>
         <tr>
@@ -35,7 +45,8 @@
         </tr>
         </thead>
         <tbody>
-        
+            <tr id="name"></tr>
+            <tr id="repolink"></tr>
         </tbody>
     </table>
     
@@ -65,10 +76,11 @@
    
       for (i=0; i<datas['length']; i++)  {
     
-    var $nr = (datas[i]['name'] +  '\t' +datas[i]['html_url']+ '\n')
+    var $nr = ('#####'+ datas[i]['name'] +'---->'+  '\t' +datas[i]['html_url']+ '\n')
     
-    table.append($nr) 
-   
+     
+    table.append($nr)
+         
       }
   
     })
